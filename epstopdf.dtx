@@ -1,11 +1,12 @@
 % \iffalse meta-comment
 %
 % File: epstopdf.dtx
-% Version: 2016/05/15 v2.6
+% Version: 2019/11/24 v2.7
 % Info: Conversion with epstopdf on the fly
 %
-% Copyright (C) 2001, 2006-2010 by
-%    Heiko Oberdiek <heiko.oberdiek at googlemail.com>
+% Copyright (C)
+% 2001, 2006-2010  Heiko Oberdiek
+% 2016-2019        Oberdiek Package Support Group
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either
@@ -21,7 +22,7 @@
 %
 % The Current Maintainers of this work are
 % Heiko Oberdiek and the Oberdiek Package Support Group
-% https://github.com/ho-tex/oberdiek/issues
+% https://github.com/ho-tex/epstopdf/issues
 %
 % This work consists of the main source file epstopdf.dtx
 % and the derived files
@@ -29,8 +30,8 @@
 %    epstopdf-base.sty, epstopdf-test1.tex.
 %
 % Distribution:
-%    CTAN:macros/latex/contrib/oberdiek/epstopdf.dtx
-%    CTAN:macros/latex/contrib/oberdiek/epstopdf.pdf
+%    CTAN:macros/latex/contrib/epstopdf/epstopdf.dtx
+%    CTAN:macros/latex/contrib/epstopdf/epstopdf.pdf
 %
 % Unpacking:
 %    (a) If epstopdf.ins is present:
@@ -59,11 +60,10 @@
 %       pdflatex epstopdf.dtx
 %
 % Installation:
-%    TDS:tex/latex/oberdiek/epstopdf.sty
-%    TDS:tex/latex/oberdiek/epstopdf-base.sty
-%    TDS:doc/latex/oberdiek/epstopdf.pdf
-%    TDS:doc/latex/oberdiek/test/epstopdf-test1.tex
-%    TDS:source/latex/oberdiek/epstopdf.dtx
+%    TDS:tex/latex/epstopdf/epstopdf.sty
+%    TDS:tex/latex/epstopdf/epstopdf-base.sty
+%    TDS:doc/latex/epstopdf/epstopdf.pdf
+%    TDS:source/latex/epstopdf/epstopdf.dtx
 %
 %<*ignore>
 \begingroup
@@ -80,7 +80,7 @@
 \input docstrip.tex
 \Msg{************************************************************************}
 \Msg{* Installation}
-\Msg{* Package: epstopdf 2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)}
+\Msg{* Package: epstopdf 2019/11/24 v2.7 Conversion with epstopdf on the fly (HO)}
 \Msg{************************************************************************}
 
 \keepsilent
@@ -92,10 +92,11 @@
 This is a generated file.
 
 Project: epstopdf
-Version: 2016/05/15 v2.6
+Version: 2019/11/24 v2.7
 
-Copyright (C) 2001, 2006-2010 by
-   Heiko Oberdiek <heiko.oberdiek at googlemail.com>
+Copyright (C)
+  2001, 2006-2010 Heiko Oberdiek
+  2016-2019       Oberdiek Package Support Group
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License, either
@@ -125,14 +126,14 @@ and the derived files
 \generate{%
   \file{epstopdf.ins}{\from{epstopdf.dtx}{install}}%
   \file{epstopdf.drv}{\from{epstopdf.dtx}{driver}}%
-  \usedir{tex/latex/oberdiek}%
+  \usedir{tex/latex/epstopdf}%
   \file{epstopdf.sty}{\from{epstopdf.dtx}{package}}%
   \file{epstopdf-base.sty}{\from{epstopdf.dtx}{base}}%
-%  \usedir{doc/latex/oberdiek/test}%
+%  \usedir{doc/latex/epstopdf/test}%
 %  \file{epstopdf-test1.tex}{\from{epstopdf.dtx}{test1}}%
   \nopreamble
   \nopostamble
-%  \usedir{source/latex/oberdiek/catalogue}%
+%  \usedir{source/latex/epstopdf/catalogue}%
 %  \file{epstopdf-pkg.xml}{\from{epstopdf.dtx}{catalogue}}%
 }
 
@@ -160,7 +161,7 @@ and the derived files
 %<*driver>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesFile{epstopdf.drv}%
-  [2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)]%
+  [2019/11/24 v2.7 Conversion with epstopdf on the fly (HO)]%
 \documentclass{ltxdoc}
 \usepackage{holtxdoc}[2011/11/22]
 \begin{document}
@@ -189,9 +190,9 @@ and the derived files
 % \GetFileInfo{epstopdf.drv}
 %
 % \title{The \xpackage{epstopdf} package}
-% \date{2016/05/15 v2.6}
+% \date{2019/11/24 v2.7}
 % \author{Heiko Oberdiek\thanks
-% {Please report any issues at \url{https://github.com/ho-tex/oberdiek/issues}}}
+% {Please report any issues at \url{https://github.com/ho-tex/epstopdf/issues}}}
 %
 % \maketitle
 %
@@ -591,7 +592,7 @@ and the derived files
   \fi
 \expandafter\x\csname ver@epstopdf.sty\endcsname
 \ProvidesPackage{epstopdf}%
-  [2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)]%
+  [2019/11/24 v2.7 Conversion with epstopdf on the fly (HO)]%
 %    \end{macrocode}
 %    Larger catcode set because of configuration files needed.
 %    \begin{macrocode}
@@ -640,7 +641,7 @@ and the derived files
 %
 %    \begin{macrocode}
 \let\ETE@SavedAtEnd\ETE@AtEnd
-\RequirePackage{epstopdf-base}[2016/05/15]
+\RequirePackage{epstopdf-base}[2019/11/24]
 \let\ETE@AtEnd\ETE@SavedAtEnd
 %    \end{macrocode}
 %
@@ -739,7 +740,7 @@ and the derived files
   \fi
 \expandafter\x\csname ver@epstopdf-base.sty\endcsname
 \ProvidesPackage{epstopdf-base}%
-  [2016/05/15 v2.6 Base part for package epstopdf]%
+  [2019/11/24 v2.7 Base part for package epstopdf]%
 %    \end{macrocode}
 %
 % \subsubsection{Catcodes}
@@ -1316,17 +1317,17 @@ and the derived files
 % \paragraph{Package.} This package is available on
 % CTAN\footnote{\CTANpkg{epstopdf}}:
 % \begin{description}
-% \item[\CTAN{macros/latex/contrib/oberdiek/epstopdf.dtx}] The source file.
-% \item[\CTAN{macros/latex/contrib/oberdiek/epstopdf.pdf}] Documentation.
+% \item[\CTAN{macros/latex/contrib/epstopdf/epstopdf.dtx}] The source file.
+% \item[\CTAN{macros/latex/contrib/epstopdf/epstopdf.pdf}] Documentation.
 % \end{description}
 %
 %
-% \paragraph{Bundle.} All the packages of the bundle `oberdiek'
+% \paragraph{Bundle.} All the packages of the bundle `epstopdf'
 % are also available in a TDS compliant ZIP archive. There
 % the packages are already unpacked and the documentation files
 % are generated. The files and directories obey the TDS standard.
 % \begin{description}
-% \item[\CTANinstall{install/macros/latex/contrib/oberdiek.tds.zip}]
+% \item[\CTANinstall{install/macros/latex/contrib/epstopdf.tds.zip}]
 % \end{description}
 % \emph{TDS} refers to the standard ``A Directory Structure
 % for \TeX\ Files'' (\CTAN{tds/tds.pdf}). Directories
@@ -1334,23 +1335,11 @@ and the derived files
 %
 % \subsection{Bundle installation}
 %
-% \paragraph{Unpacking.} Unpack the \xfile{oberdiek.tds.zip} in the
+% \paragraph{Unpacking.} Unpack the \xfile{epstopdf.tds.zip} in the
 % TDS tree (also known as \xfile{texmf} tree) of your choice.
 % Example (linux):
 % \begin{quote}
-%   |unzip oberdiek.tds.zip -d ~/texmf|
-% \end{quote}
-%
-% \paragraph{Script installation.}
-% Check the directory \xfile{TDS:scripts/oberdiek/} for
-% scripts that need further installation steps.
-% Package \xpackage{attachfile2} comes with the Perl script
-% \xfile{pdfatfi.pl} that should be installed in such a way
-% that it can be called as \texttt{pdfatfi}.
-% Example (linux):
-% \begin{quote}
-%   |chmod +x scripts/oberdiek/pdfatfi.pl|\\
-%   |cp scripts/oberdiek/pdfatfi.pl /usr/local/bin/|
+%   |unzip epstopdf.tds.zip -d ~/texmf|
 % \end{quote}
 %
 % \subsection{Package installation}
@@ -1368,11 +1357,11 @@ and the derived files
 % \begin{quote}
 % \def\t{^^A
 % \begin{tabular}{@{}>{\ttfamily}l@{ $\rightarrow$ }>{\ttfamily}l@{}}
-%   epstopdf.sty & tex/latex/oberdiek/epstopdf.sty\\
-%   epstopdf-base.sty & tex/latex/oberdiek/epstopdf-base.sty\\
-%   epstopdf.pdf & doc/latex/oberdiek/epstopdf.pdf\\
-%   test/epstopdf-test1.tex & doc/latex/oberdiek/test/epstopdf-test1.tex\\
-%   epstopdf.dtx & source/latex/oberdiek/epstopdf.dtx\\
+%   epstopdf.sty & tex/latex/epstopdf/epstopdf.sty\\
+%   epstopdf-base.sty & tex/latex/epstopdf/epstopdf-base.sty\\
+%   epstopdf.pdf & doc/latex/epstopdf/epstopdf.pdf\\
+%   test/epstopdf-test1.tex & doc/latex/epstopdf/test/epstopdf-test1.tex\\
+%   epstopdf.dtx & source/latex/epstopdf/epstopdf.dtx\\
 % \end{tabular}^^A
 % }^^A
 % \sbox0{\t}^^A
@@ -1593,6 +1582,10 @@ and the derived files
 %   \begin{Version}{2016/05/15 v2.6}
 %   \item
 %     luaTeX compatibility
+%   \end{Version}
+%   \begin{Version}{2019/11/24 v2.7}
+%   \item
+%     New epstopdf repository.
 %   \end{Version}
 % \end{History}
 %
