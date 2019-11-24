@@ -1,7 +1,7 @@
 #!/usr/bin/env texlua
 
 
-module = "epstopdf"
+module = "epstopdf-pkg"
 
 textfiles = {"README.md"}
 unpackfiles = {'epstopdf.dtx'}
