@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %
 % File: epstopdf.dtx
-% Version: 2019/11/24 v2.7
+% Version: 2019/11/27 v2.8
 % Info: Conversion with epstopdf on the fly
 %
 % Copyright (C)
@@ -80,7 +80,7 @@
 \input docstrip.tex
 \Msg{************************************************************************}
 \Msg{* Installation}
-\Msg{* Package: epstopdf 2019/11/24 v2.7 Conversion with epstopdf on the fly (HO)}
+\Msg{* Package: epstopdf 2019/11/27 v2.8 Conversion with epstopdf on the fly (HO)}
 \Msg{************************************************************************}
 
 \keepsilent
@@ -92,7 +92,7 @@
 This is a generated file.
 
 Project: epstopdf
-Version: 2019/11/24 v2.7
+Version: 2019/11/27 v2.8
 
 Copyright (C)
   2001, 2006-2010 Heiko Oberdiek
@@ -161,7 +161,7 @@ and the derived files
 %<*driver>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesFile{epstopdf.drv}%
-  [2019/11/24 v2.7 Conversion with epstopdf on the fly (HO)]%
+  [2019/11/27 v2.8 Conversion with epstopdf on the fly (HO)]%
 \documentclass{ltxdoc}
 \usepackage{holtxdoc}[2011/11/22]
 \begin{document}
@@ -171,26 +171,10 @@ and the derived files
 % \fi
 %
 %
-% \CharacterTable
-%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
-%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
-%   Digits        \0\1\2\3\4\5\6\7\8\9
-%   Exclamation   \!     Double quote  \"     Hash (number) \#
-%   Dollar        \$     Percent       \%     Ampersand     \&
-%   Acute accent  \'     Left paren    \(     Right paren   \)
-%   Asterisk      \*     Plus          \+     Comma         \,
-%   Minus         \-     Point         \.     Solidus       \/
-%   Colon         \:     Semicolon     \;     Less than     \<
-%   Equals        \=     Greater than  \>     Question mark \?
-%   Commercial at \@     Left bracket  \[     Backslash     \\
-%   Right bracket \]     Circumflex    \^     Underscore    \_
-%   Grave accent  \`     Left brace    \{     Vertical bar  \|
-%   Right brace   \}     Tilde         \~}
-%
 % \GetFileInfo{epstopdf.drv}
 %
 % \title{The \xpackage{epstopdf} package}
-% \date{2019/11/24 v2.7}
+% \date{2019/11/27 v2.8}
 % \author{Heiko Oberdiek\thanks
 % {Please report any issues at \url{https://github.com/ho-tex/epstopdf/issues}}}
 %
@@ -472,7 +456,7 @@ and the derived files
 % EPS to PDF. Example that uses \xprogram{Ghostscript}:
 % \begin{quote}
 %   |\DeclareGraphicsRule{.eps}{pdf}{.pdf}{%|\\
-%   |  \epstopdfcall{`ps2pdf -dEPSCrop #1 \noexpand\OutputFile}%|\\
+%   | \epstopdfcall{`ps2pdf -dEPSCrop #1 \noexpand\OutputFile}%|\\
 %   |}|
 % \end{quote}
 % \cs{DeclareGraphicsRule} expands the argument, therefore \cs{noexpand}
@@ -592,7 +576,7 @@ and the derived files
   \fi
 \expandafter\x\csname ver@epstopdf.sty\endcsname
 \ProvidesPackage{epstopdf}%
-  [2019/11/24 v2.7 Conversion with epstopdf on the fly (HO)]%
+  [2019/11/27 v2.8 Conversion with epstopdf on the fly (HO)]%
 %    \end{macrocode}
 %    Larger catcode set because of configuration files needed.
 %    \begin{macrocode}
@@ -641,7 +625,7 @@ and the derived files
 %
 %    \begin{macrocode}
 \let\ETE@SavedAtEnd\ETE@AtEnd
-\RequirePackage{epstopdf-base}[2019/11/24]
+\RequirePackage{epstopdf-base}[2019/11/27]
 \let\ETE@AtEnd\ETE@SavedAtEnd
 %    \end{macrocode}
 %
@@ -740,7 +724,7 @@ and the derived files
   \fi
 \expandafter\x\csname ver@epstopdf-base.sty\endcsname
 \ProvidesPackage{epstopdf-base}%
-  [2019/11/24 v2.7 Base part for package epstopdf]%
+  [2019/11/27 v2.8 Base part for package epstopdf]%
 %    \end{macrocode}
 %
 % \subsubsection{Catcodes}
@@ -794,11 +778,55 @@ and the derived files
 %
 % \subsubsection{Load packages}
 %
+% This package is split into \xpackage{epstopdf-base} and \xpackage{epstopdf}
+% The base version is called directly by the \xpackage{graphics} package. Unfortunately
+% It still includes many contributed packages  which breaks the layering of the core
+% \LaTeX\ graphics release.
+%
+% Compatibility concerns mean refactoring the package to only have options 
+% in \xpackage{epstopdf}  is tricky, so from release 2.8, if no options have been passed in
+% to \xpackage{epstopdf-base} The package loading and option setting is skipped and the default
+% settings are set directly. In the case of Lua\TeX, the Lua portion of \xpackage{pdftexcmds}
+% are used to provide the file handling functionality.
 %    \begin{macrocode}
-\RequirePackage{infwarerr}[2007/09/09]
-\RequirePackage{grfext}\relax
-\RequirePackage{kvoptions}[2007/10/02]
-\RequirePackage{pdftexcmds}[2007/11/11]
+\ifx\@curroptions\@empty
+  \ifx\@PackageInfo\@undefined
+    \let\@PackageInfo\PackageInfo
+    \let\@PackageWarningNoLine\PackageWarningNoLine
+    \def\@PackageInfoNoLine#1#2{\PackageInfo{#1}{#2\@gobble}}
+    \let\@PackageError\PackageError
+  \fi
+  \ifx\pdf@strcmp\@undefined
+    \ifx\directlua\@undefined
+      \def\pdf@strcmp{\pdfstrcmp}
+      \def\pdf@filemoddate{\pdffilemoddate}
+      \def\pdf@filesize{\pdffilesize}
+      \def\pdf@system#{\immediate\write18 }
+    \else
+      \directlua{require("pdftexcmds")}
+      \long\def\pdf@strcmp#1#2{\directlua{%
+        oberdiek.pdftexcmds.strcmp("\luaescapestring{#1}",
+                                   "\luaescapestring{#2}")}}%
+      \def\pdf@filemoddate#1{\directlua{%
+        oberdiek.pdftexcmds.filemoddate("\luaescapestring{#1}")}}
+      \def\pdf@filesize#1{\directlua0{%
+        oberdiek.pdftexcmds.filesize("\luaescapestring{#1}")}}
+      \def\pdf@system#1{\directlua{%
+        oberdiek.pdftexcmds.system("\luaescapestring{#1}")}}
+    \fi
+  \fi
+\else
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+  \RequirePackage{infwarerr}[2007/09/09]
+  \RequirePackage{grfext}\relax
+  \RequirePackage{kvoptions}[2007/10/02]
+  \RequirePackage{pdftexcmds}[2007/11/11]
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\fi
 %    \end{macrocode}
 %
 % \subsection{Checks}
@@ -855,47 +883,65 @@ and the derived files
 \endgroup
 %    \end{macrocode}
 %
-% \subsection{Package loading}
-%
+% \subsection{Options}
+% As noted above, if not options have been passed in (typically if called directly
+% from \verb|pdftex.def|) then the \xpackage{kvoptions} handling is not loaded
+% and the defaults are set directly.
 %    \begin{macrocode}
+\newif\ifETE@prepend
+\ifx\SetupKeyvalOptions\@undefined
+  \def\ETE@let#1#2{%
+    \expandafter\let\csname ifETE@#1\expandafter\endcsname
+    \csname if#2\endcsname}
+  \ETE@let{verbose}{true}
+  \ETE@let{disable}{false}
+  \ETE@let{update}{true}
+  \ETE@let{prepend}{false}
+  \ETE@let{prefersuffix}{true}
+  \def\ETE@outdir{}
+  \def\ETE@suffix{-\SourceExt-converted-to}
+  \def\ETE@program@epstopdf{\epstopdf@sys@cmd}
+  \newcommand*{\epstopdfsetup}[1]{}%
+\else
 %    \end{macrocode}
 %
-% \subsection{Options}
-%
 %    \begin{macrocode}
-\SetupKeyvalOptions{family=ETE,prefix=ETE@}
-\DeclareBoolOption{update}
-\DeclareBoolOption{verbose}
-\newif\ifETE@prepend
-\DeclareVoidOption{prepend}{\ETE@prependtrue}
-\DeclareVoidOption{append}{\ETE@prependfalse}
-\DeclareStringOption{outdir}
-\DeclareStringOption{suffix}
-\DeclareBoolOption{prefersuffix}
-\DeclareStringOption{program@epstopdf}
+  \SetupKeyvalOptions{family=ETE,prefix=ETE@}
+  \DeclareBoolOption{update}
+  \DeclareBoolOption{verbose}
+  \DeclareVoidOption{prepend}{\ETE@prependtrue}
+  \DeclareVoidOption{append}{\ETE@prependfalse}
+  \DeclareStringOption{outdir}
+  \DeclareStringOption{suffix}
+  \DeclareBoolOption{prefersuffix}
+  \DeclareStringOption{program@epstopdf}
 %    \end{macrocode}
 %    Options \xoption{disable} and \xoption{enable} are for testing
 %    only. Therefore they are not documented on purpose.
 %    \begin{macrocode}
-\DeclareBoolOption{disable}
-\DeclareComplementaryOption{enable}{disable}
+  \DeclareBoolOption{disable}
+  \DeclareComplementaryOption{enable}{disable}
 %    \end{macrocode}
 %    \begin{macrocode}
-\newcommand*{\epstopdfsetup}{\setkeys{ETE}}
+  \newcommand*{\epstopdfsetup}{\setkeys{ETE}}
 %    \end{macrocode}
 %
 % \subsubsection{Default setting}
 %
 %    \begin{macrocode}
-\epstopdfsetup{%
-  verbose,%
-  enable,%
-  append,%
-  update,%
-  prefersuffix,%
-  suffix=-\SourceExt-converted-to,%
-  program@epstopdf=epstopdf%
-}
+  \epstopdfsetup{%
+    verbose,%
+    enable,%
+    append,%
+    update,%
+    prefersuffix,%
+    suffix=-\SourceExt-converted-to,%
+    program@epstopdf=epstopdf%
+  }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\fi
 %    \end{macrocode}
 %
 % \subsection{Make and verbose}
@@ -1163,13 +1209,33 @@ and the derived files
 %    \end{macrocode}
 %
 %    \begin{macrocode}
+\ifx\AppendGraphicsExtensions\@undefined\else
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \ifETE@prepend
   \expandafter\PrependGraphicsExtensions
 \else
   \expandafter\AppendGraphicsExtensions
 \fi
 {.eps}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\fi
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \let\ETE@prepend\@undefined
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\ifx\SetupKeyvalOptions\@undefined
+\InputIfFileExists{epstopdf-sys.cfg}{}{}
+\else
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \DeclareVoidOption{prepend}{%
   \PrependGraphicsExtensions{.eps}%
 }
@@ -1182,6 +1248,10 @@ and the derived files
 %    \begin{macrocode}
 \InputIfFileExists{epstopdf-sys.cfg}{}{}
 \InputIfFileExists{epstopdf.cfg}{}{}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\fi
 %    \end{macrocode}
 %
 %    \begin{macrocode}
@@ -1586,6 +1656,11 @@ and the derived files
 %   \begin{Version}{2019/11/24 v2.7}
 %   \item
 %     New epstopdf repository.
+%   \end{Version}
+%   \begin{Version}{2019/11/27 v2.8}
+%   \item
+%     The base package configured not to require additional
+%     packages if called with no arguments.
 %   \end{Version}
 % \end{History}
 %
