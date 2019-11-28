@@ -623,8 +623,13 @@ and the derived files
 \edef\ETE@AtEnd{\ETE@AtEnd\noexpand\endinput}
 %    \end{macrocode}
 %
+% Ensure packages loaded by the full \xpackage{epstopdf}, for compatibility.
 %    \begin{macrocode}
 \let\ETE@SavedAtEnd\ETE@AtEnd
+\RequirePackage{infwarerr}[2007/09/09]
+\RequirePackage{grfext}\relax
+\RequirePackage{kvoptions}[2007/10/02]
+\RequirePackage{pdftexcmds}[2007/11/11]
 \RequirePackage{epstopdf-base}[2019/11/27]
 \let\ETE@AtEnd\ETE@SavedAtEnd
 %    \end{macrocode}
