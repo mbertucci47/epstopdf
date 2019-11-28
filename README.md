@@ -7,14 +7,14 @@ epstopdf (and epstopdf-base) package for including EPS in pdftex and luatex
 `epstopdf-base.sty` is included by the pdftex and luatex options for
 the core graphics package
 
-Separating epspdf to a separate repository is a first step in removing
-the dependency of the core package on the entire oberdiek bundle.
-
-Currently the dependency is still present due to 
+The full package has a dependency on the following packages
 
 
     \RequirePackage{infwarerr}[2007/09/09]
     \RequirePackage{grfext}\relax
     \RequirePackage{kvoptions}[2007/10/02]
     \RequirePackage{pdftexcmds}[2007/11/11]
+
+The epstopdf-base package, if used with no arguments, (as used by the graphics package)
+does not include these packages, but does use the Lua module from pdftexcmds.
 
