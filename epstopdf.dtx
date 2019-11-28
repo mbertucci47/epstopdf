@@ -780,12 +780,12 @@ and the derived files
 %
 % This package is split into \xpackage{epstopdf-base} and \xpackage{epstopdf}
 % The base version is called directly by the \xpackage{graphics} package. Unfortunately
-% It still includes many contributed packages  which breaks the layering of the core
+% it still includes many contributed packages  which breaks the layering of the core
 % \LaTeX\ graphics release.
 %
 % Compatibility concerns mean refactoring the package to only have options 
 % in \xpackage{epstopdf}  is tricky, so from release 2.8, if no options have been passed in
-% to \xpackage{epstopdf-base} The package loading and option setting is skipped and the default
+% to \xpackage{epstopdf-base}, the package loading and option setting are skipped and the default
 % settings are set directly. In the case of Lua\TeX, the Lua portion of \xpackage{pdftexcmds}
 % is used to provide the file handling functionality.
 %    \begin{macrocode}
@@ -884,7 +884,7 @@ and the derived files
 %    \end{macrocode}
 %
 % \subsection{Options}
-% As noted above, if not options have been passed in (typically if called directly
+% As noted above, if no options have been passed in (typically if called directly
 % from \verb|pdftex.def|) then the \xpackage{kvoptions} handling is not loaded
 % and the defaults are set directly.
 %    \begin{macrocode}
