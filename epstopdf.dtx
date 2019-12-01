@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %
 % File: epstopdf.dtx
-% Version: 2019/11/27 v2.8
+% Version: 2019-11-30 v2.9
 % Info: Conversion with epstopdf on the fly
 %
 % Copyright (C)
@@ -80,7 +80,7 @@
 \input docstrip.tex
 \Msg{************************************************************************}
 \Msg{* Installation}
-\Msg{* Package: epstopdf 2019/11/27 v2.8 Conversion with epstopdf on the fly (HO)}
+\Msg{* Package: epstopdf 2019-11-30 v2.9 Conversion with epstopdf on the fly (HO)}
 \Msg{************************************************************************}
 
 \keepsilent
@@ -92,7 +92,7 @@
 This is a generated file.
 
 Project: epstopdf
-Version: 2019/11/27 v2.8
+Version: 2019-11-30 v2.9
 
 Copyright (C)
   2001, 2006-2010 Heiko Oberdiek
@@ -112,7 +112,7 @@ This work has the LPPL maintenance status "maintained".
 
 The Current Maintainers of this work are
 Heiko Oberdiek and the Oberdiek Package Support Group
-https://github.com/ho-tex/oberdiek/issues
+https://github.com/ho-tex/epstopdf/issues
 
 
 This work consists of the main source file epstopdf.dtx
@@ -161,7 +161,7 @@ and the derived files
 %<*driver>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesFile{epstopdf.drv}%
-  [2019/11/27 v2.8 Conversion with epstopdf on the fly (HO)]%
+  [2019-11-30 v2.9 Conversion with epstopdf on the fly (HO)]%
 \documentclass{ltxdoc}
 \usepackage{holtxdoc}[2011/11/22]
 \begin{document}
@@ -174,7 +174,7 @@ and the derived files
 % \GetFileInfo{epstopdf.drv}
 %
 % \title{The \xpackage{epstopdf} package}
-% \date{2019/11/27 v2.8}
+% \date{2019-11-30 v2.9}
 % \author{Heiko Oberdiek\thanks
 % {Please report any issues at \url{https://github.com/ho-tex/epstopdf/issues}}}
 %
@@ -576,7 +576,7 @@ and the derived files
   \fi
 \expandafter\x\csname ver@epstopdf.sty\endcsname
 \ProvidesPackage{epstopdf}%
-  [2019/11/27 v2.8 Conversion with epstopdf on the fly (HO)]%
+  [2019-11-30 v2.9 Conversion with epstopdf on the fly (HO)]%
 %    \end{macrocode}
 %    Larger catcode set because of configuration files needed.
 %    \begin{macrocode}
@@ -729,7 +729,7 @@ and the derived files
   \fi
 \expandafter\x\csname ver@epstopdf-base.sty\endcsname
 \ProvidesPackage{epstopdf-base}%
-  [2019/11/27 v2.8 Base part for package epstopdf]%
+  [2019-11-30 v2.9 Base part for package epstopdf]%
 %    \end{macrocode}
 %
 % \subsubsection{Catcodes}
@@ -1236,7 +1236,6 @@ and the derived files
 %
 %    \begin{macrocode}
 \ifx\SetupKeyvalOptions\@undefined
-\InputIfFileExists{epstopdf-sys.cfg}{}{}
 \else
 %    \end{macrocode}
 %
@@ -1251,13 +1250,14 @@ and the derived files
 %    \end{macrocode}
 %
 %    \begin{macrocode}
+\fi
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \InputIfFileExists{epstopdf-sys.cfg}{}{}
 \InputIfFileExists{epstopdf.cfg}{}{}
 %    \end{macrocode}
 %
-%    \begin{macrocode}
-\fi
-%    \end{macrocode}
 %
 %    \begin{macrocode}
 \ETE@AtEnd%
@@ -1667,8 +1667,11 @@ and the derived files
 %     The base package configured not to require additional
 %     packages if called with no arguments.
 %   \item
-%    Code re-arranged to avoidP
+%    Code re-arranged to avoid:
 %    \verb|\end occurred when \ifx on line 165 was incomplete| warning in dvi mode.
+%   \end{Version}
+%   \begin{Version}{2019-11-30 v2.9}
+%   \item Read the \verb|epstopdf.cfg| file even in the base code is being used.
 %   \end{Version}
 % \end{History}
 %
