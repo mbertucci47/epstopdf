@@ -810,7 +810,7 @@ and the derived files
                                    '\luaescapestring{#2}')}}%
       \def\pdf@filemoddate#1{\directlua{%
         oberdiek.pdftexcmds.filemoddate('\luaescapestring{#1}')}}
-      \def\pdf@filesize#1{\directlua0{%
+      \def\pdf@filesize#1{\directlua{%
         oberdiek.pdftexcmds.filesize('\luaescapestring{#1}')}}
       \def\pdf@system#1{\directlua{%
         oberdiek.pdftexcmds.system('\luaescapestring{#1}')}}
