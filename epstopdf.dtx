@@ -804,16 +804,16 @@ and the derived files
       \def\pdf@filesize{\pdffilesize}
       \def\pdf@system#{\immediate\write18 }
     \else
-      \directlua{require("pdftexcmds")}
+      \directlua{require('pdftexcmds')}
       \long\def\pdf@strcmp#1#2{\directlua{%
-        oberdiek.pdftexcmds.strcmp("\luaescapestring{#1}",
-                                   "\luaescapestring{#2}")}}%
+        oberdiek.pdftexcmds.strcmp('\luaescapestring{#1}',
+                                   '\luaescapestring{#2}')}}%
       \def\pdf@filemoddate#1{\directlua{%
-        oberdiek.pdftexcmds.filemoddate("\luaescapestring{#1}")}}
+        oberdiek.pdftexcmds.filemoddate('\luaescapestring{#1}')}}
       \def\pdf@filesize#1{\directlua0{%
-        oberdiek.pdftexcmds.filesize("\luaescapestring{#1}")}}
+        oberdiek.pdftexcmds.filesize('\luaescapestring{#1}')}}
       \def\pdf@system#1{\directlua{%
-        oberdiek.pdftexcmds.system("\luaescapestring{#1}")}}
+        oberdiek.pdftexcmds.system('\luaescapestring{#1}')}}
     \fi
   \fi
 \else
@@ -1545,6 +1545,9 @@ and the derived files
 %   \end{Version}
 %   \begin{Version}{2019-11-30 v2.9}
 %   \item Read the \verb|epstopdf.cfg| file even in the base code is being used.
+%   \end{Version}
+%   \begin{Version}{2019-12-09 v2.10}
+%   \item use \verb|'| not \verb|"| for Lua strings, as the latter not made safe.
 %   \end{Version}
 % \end{History}
 %
