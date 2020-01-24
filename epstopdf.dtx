@@ -1252,10 +1252,10 @@ and the derived files
 \InputIfFileExists{epstopdf.cfg}{}{}
 %    \end{macrocode}
 %
-% Use \texttt{repstpdf} if the cfg files have not set a default.
+% Use \texttt{epstpdf} if the cfg files have not set a default.
 %    \begin{macrocode}
 \expandafter\ifx\csname epstopdf@sys@cmd\endcsname\relax
-  \def\epstopdf@sys@cmd{repstopdf}
+  \def\epstopdf@sys@cmd{epstopdf}
 \fi
 %    \end{macrocode}
 %
@@ -1555,8 +1555,7 @@ and the derived files
 %   \item use \verb|'| not \verb|"| for Lua strings, as the latter not made safe.
 %   \end{Version}
 %   \begin{Version}{2020-01-24 v2.11}
-%   \item Ensure that \verb|\epstopdf@sys@cmd| is defined (to
-%     \texttt{repstopdf}) even if no \texttt{cfg} file is found.
+%   \item Ensure that \verb|\epstopdf@sys@cmd| is defined even if no \texttt{cfg} file is found.
 %   \end{Version}
 % \end{History}
 %
