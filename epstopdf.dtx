@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %
 % File: epstopdf.dtx
-% Version: 2020-01-24 v2.11
+% Version: 2020-09-21 v2.12
 % Info: Conversion with epstopdf on the fly
 %
 % Copyright (C)
@@ -80,7 +80,7 @@
 \input docstrip.tex
 \Msg{************************************************************************}
 \Msg{* Installation}
-\Msg{* Package: epstopdf 2020-01-24 v2.11 Conversion with epstopdf on the fly (HO)}
+\Msg{* Package: epstopdf 2020-09-21 v2.12 Conversion with epstopdf on the fly (HO)}
 \Msg{************************************************************************}
 
 \keepsilent
@@ -92,7 +92,7 @@
 This is a generated file.
 
 Project: epstopdf
-Version: 2020-01-24 v2.11
+Version: 2020-09-21 v2.12
 
 Copyright (C)
   2001-2010  Heiko Oberdiek
@@ -155,7 +155,7 @@ and the derived files
 %<*driver>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesFile{epstopdf.drv}%
-  [2020-01-24 v2.11 Conversion with epstopdf on the fly (HO)]%
+  [2020-09-21 v2.12 Conversion with epstopdf on the fly (HO)]%
 \documentclass{ltxdoc}
 \usepackage{holtxdoc}[2011/11/22]
 \begin{document}
@@ -168,7 +168,7 @@ and the derived files
 % \GetFileInfo{epstopdf.drv}
 %
 % \title{The \xpackage{epstopdf} package}
-% \date{2020-01-24 v2.11}
+% \date{2020-09-21 v2.12}
 % \author{Heiko Oberdiek\thanks
 % {Please report any issues at \url{https://github.com/ho-tex/epstopdf/issues}}}
 %
@@ -179,6 +179,9 @@ and the derived files
 % to package \xpackage{graphics} or \xpackage{graphicx}
 % with option \xoption{pdftex}. If an eps image is detected,
 % epstopdf is automatically called to convert it to pdf format.
+%
+% The package is almost never needed in a modern TeX-system as the core functionality
+% is loaded by default.
 % \end{abstract}
 %
 % \tableofcontents
@@ -221,7 +224,8 @@ and the derived files
 %
 % \begin{itemize}
 % \item
-%   The feature \cs{write18} must be enabled. This allows the
+%   In older TeX-system where \texttt{epstopdf} can not be run in restricted mode,
+%   the feature \cs{write18} must be enabled. This allows the
 %   running of external programs during \TeX's compile run.
 %   Keep in mind that this is a security risk. The feature is an
 %   addition to \TeX. Mik\TeX\ and \TeX\ Live support it.
@@ -570,7 +574,7 @@ and the derived files
   \fi
 \expandafter\x\csname ver@epstopdf.sty\endcsname
 \ProvidesPackage{epstopdf}%
-  [2020-01-24 v2.11 Conversion with epstopdf on the fly (HO)]%
+  [2020-09-21 v2.12 Conversion with epstopdf on the fly (HO)]%
 %    \end{macrocode}
 %    Larger catcode set because of configuration files needed.
 %    \begin{macrocode}
@@ -723,7 +727,7 @@ and the derived files
   \fi
 \expandafter\x\csname ver@epstopdf-base.sty\endcsname
 \ProvidesPackage{epstopdf-base}%
-  [2020-01-24 v2.11 Base part for package epstopdf]%
+  [2020-09-21 v2.12 Base part for package epstopdf]%
 %    \end{macrocode}
 %
 % \subsubsection{Catcodes}
@@ -782,7 +786,7 @@ and the derived files
 % it still includes many contributed packages  which breaks the layering of the core
 % \LaTeX\ graphics release.
 %
-% Compatibility concerns mean refactoring the package to only have options 
+% Compatibility concerns mean refactoring the package to only have options
 % in \xpackage{epstopdf}  is tricky, so from release 2.8, if no options have been passed in
 % to \xpackage{epstopdf-base}, the package loading and option setting are skipped and the default
 % settings are set directly. In the case of Lua\TeX, the Lua portion of \xpackage{pdftexcmds}
@@ -1556,6 +1560,9 @@ and the derived files
 %   \end{Version}
 %   \begin{Version}{2020-01-24 v2.11}
 %   \item Ensure that \verb|\epstopdf@sys@cmd| is defined even if no \texttt{cfg} file is found.
+%   \end{Version}
+%   \begin{Version}{2020-09-21 v2.12}
+%   \item Updated documentation.
 %   \end{Version}
 % \end{History}
 %
