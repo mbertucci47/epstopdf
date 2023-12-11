@@ -52,7 +52,7 @@
 %    use A4 as paper format:
 %       \PassOptionsToClass{a4paper}{article}
 %
-%    Programm calls to get the documentation (example):
+%    Program calls to get the documentation (example):
 %       pdflatex epstopdf.dtx
 %       makeindex -s gind.ist epstopdf.idx
 %       pdflatex epstopdf.dtx
@@ -199,7 +199,7 @@ and the derived files
 %
 % Usually the drivers do not support all kind of graphics files.
 % Other image types must be converted, before they become
-% usuable. In case of driver \xprogram{dvips}, the graphics
+% usable. In case of driver \xprogram{dvips}, the graphics
 % rule may contain a conversion rule. Then all that package
 % \xpackage{graphics} must know is the bounding box, the command
 % is passed to \xprogram{dvips} that calls it and embeds the
@@ -212,7 +212,7 @@ and the derived files
 % \cs{DeclareGraphicsRule} were of no use.
 % But external programs can be called within \pdfTeX.
 % This feature is called ``shell escape'' or ``write 18''
-% and must usually enabled explicitely because of security reasons.
+% and must usually enabled explicitly because of security reasons.
 % Now, this package \xpackage{epstopdf} hooks
 % into package \xpackage{graphics}' code to catch
 % that argument with the external command and executes it
@@ -355,7 +355,7 @@ and the derived files
 %   and the extension of the output file. Rationale: It can happen,
 %   that a PDF file is the original file and the EPS file the
 %   generated file. If now the package thinks, that the PDF file
-%   is the generated file, it will `regnerate' it. But in reality
+%   is the generated file, it will `regenerate' it. But in reality
 %   the original file is lost. Therefore I recommend to use this
 %   option always to generate a separate name space for generated
 %   files. Proposed value is \texttt{-generated} or \texttt{.generated}.
